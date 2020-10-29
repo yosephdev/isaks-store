@@ -1,66 +1,62 @@
 [
   {
     "title": "Balo Bapago Kaya Navy",
-    "id": "sticker_logo",
-    "description": "Show off your Snipcart support with a logo sticker!",
+    "id": "sticker_logo",   
     "price": "40.00",
     "image": "/images/1.jpg"
   },
   {
     "title": "Balo B2B04 Black",
-    "id": "sticker_logo_pack",
-    "description": "Get a pack of 3 Snipcart logo stickers.",
+    "id": "sticker_logo_pack",    
     "price": "55.00",
     "image": "/images/2.jpg"
   },
   {
     "title": "Brown Brim",
     "id": "caps",    
-    "price": "2.00",
+    "price": "50.00",
     "image": "https://i.ibb.co/ZYW3VTp/brown-brim.png"
   },
   {
     "title": "Blue Beanie",
     "id": "sticker_logo_pack",    
-    "price": "4.00",
+    "price": "40.00",
     "image": "https://i.ibb.co/ypkgK0X/blue-beanie.png"
   },
   {
     "title": "Brown Cowboy",
     "id": "caps",    
-    "price": "2.00",
+    "price": "52.00",
     "image": "https://i.ibb.co/QdJwgmp/brown-cowboy.png"
   },
   {
     "title": "Grey Brim",
     "id": "caps",    
-    "price": "4.00",
+    "price": "54.00",
     "image": "https://i.ibb.co/RjBLWxB/grey-brim.png"
   },
   {
     "title": "Green Beanie",
     "id": "caps",    
-    "price": "2.00",
+    "price": "60.00",
     "image": "https://i.ibb.co/YTjW3vF/green-beanie.png"
   },
   {
-    "title": "Palm Tree",
-    "id": "caps",
-    "description": "Get a taste of palm tree cap.",
-    "price": "4.00",
+    "title": "Palm Tree cap",
+    "id": "caps",   
+    "price": "40.00",
     "image": "https://i.ibb.co/rKBDvJX/palm-tree-cap.png"
   },
   {
     "title": "Red Beanie",
     "id": "sticker_logo",    
-    "price": "2.00",
+    "price": "42.00",
     "image": "https://i.ibb.co/bLB646Z/red-beanie.png"
   },
   {
-    "title": "Snipcart Logo Sticker Pack",
-    "id": "sticker_logo_pack",
-    "description": "Get a pack of 3 Snipcart logo stickers.",
-    "price": "4.00",
+    "title": "Wolf cap",
+    "id": "sticker_logo_pack",    
+    "price": "60.00",
     "image": "https://i.ibb.co/1f2nWMM/wolf-cap.png"
   },
   {
