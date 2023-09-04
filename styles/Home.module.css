@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #f5f5f5;
 }
 
 .main {
@@ -48,8 +49,9 @@
 
 .title {
   margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
+  line-height: 1.15;  
+  font-size: 2rem;
+  color: #333;
 }
 
 .title,
@@ -58,8 +60,8 @@
 }
 
 .description {
-  line-height: 1.5;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  color: #777;
 }
 
 .code {
@@ -72,12 +74,21 @@
 }
 
 .grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
-  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.product-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .card {
