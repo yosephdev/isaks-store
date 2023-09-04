@@ -1,7 +1,12 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-
 import products from "../products.json";
+import ProductCard from "../pages/ProductCard"
+
+require("dotenv").config();
+
+const SNIPCART_API_KEY = process.env.SNIPCART_API_KEY;
+const SNIPCART_THEME_URL = process.env.SNIPCART_THEME_URL;
 
 export default function Home() {
   return (
@@ -34,28 +39,9 @@ export default function Home() {
         </p>
 
         <div className={styles.grid}>
-          {products.map((product) => {
-            return (
-              <div key={product.id} className={styles.card}>
-                <img src={product.image} alt={`Preview of ${product.title}`} />
-                <h3>{product.title}</h3>
-                <p>{product.description}</p>
-                <p>${product.price}</p>
-                <p>
-                  <button
-                    className="snipcart-add-item"
-                    data-item-id={product.id}
-                    data-item-image={product.image}
-                    data-item-name={product.title}
-                    data-item-url="/"
-                    data-item-price={product.price}
-                  >
-                    Add to Cart
-                  </button>
-                </p>
-              </div>
-            );
-          })}
+          {products.map((product) => (
+            <ProductCard {...product} />
+          ))}
         </div>
       </main>
 
@@ -70,15 +56,8 @@ export default function Home() {
         </a>
       </footer>
 
-      <script
-        async
-        src="https://cdn.snipcart.com/themes/v3.0.23/default/snipcart.js"
-      ></script>
-      <div
-        id="snipcart"
-        data-api-key="NGJiOTQ0M2ItNGNhMi00MGJlLTgwMzYtZDk4ZGQ1NmQ3YzM1NjM3MzM4Nzg4NTYxMTYxNTA3"
-        hidden
-      ></div>
+      <script async src={SNIPCART_THEME_URL}></script>
+      <div id="snipcart" data-api-key={SNIPCART_API_KEY} hidden></div>
     </div>
   );
 }
