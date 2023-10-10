@@ -1,30 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Isaks Store
+
+Isaks Store is a modern e-commerce platform built with [Next.js](https://nextjs.org/). The store offers a seamless online shopping experience with a wide range of products. Check out the live project [here](https://isaks-store.vercel.app/).
+
+## Features
+
+- Responsive design ensuring a good user experience on both desktop and mobile devices.
+- Fast page loading with Server Side Rendering (SSR) enabled by Next.js.
+- Secure and straightforward checkout process.
+- Search functionality for easily finding products.
+- Product categorization and sorting.
 
 ## Getting Started
 
-First, run the development server:
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
+### Prerequisites
+
+- Node.js (v14 or later)
+- Yarn or npm
+
+### Installation
+
+1. Clone the repository:
+   
 ```bash
-npm run dev
-# or
-yarn dev
+git clone https://github.com/your-username/isaks-store.git
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Change into the project directory:
+```bash
+cd isaks-store
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```
+5. Install dependencies:
+```bash
+yarn install
+# or with npm
+npm install
 
-## Learn More
+```
+4. Run the development server:
+```bash
 
-To learn more about Next.js, take a look at the following resources:
+yarn dev
+# or with npm
+npm run dev
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+### Now, the app should be running on http://localhost:3000.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+### Contact
+- Project Maintainer: Yoseph Berhane
+- Project Link: https://isaks-store.vercel.app
