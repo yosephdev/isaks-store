@@ -22,25 +22,30 @@ These instructions will get you a copy of the project up and running on your loc
 ### Installation
 
 1. Clone the repository:
-   
+
 ```bash
 git clone https://github.com/your-username/isaks-store.git
 
 ```
 
 2. Change into the project directory:
+
 ```bash
 cd isaks-store
 
 ```
+
 5. Install dependencies:
+
 ```bash
 yarn install
 # or with npm
 npm install
 
 ```
+
 4. Run the development server:
+
 ```bash
 
 yarn dev
@@ -51,6 +56,8 @@ npm run dev
 ### Now, the app should be running on http://localhost:3000.
 
 ```
+
 ### Contact
+
 - Project Maintainer: Yoseph Berhane
-- Project Link: https://isaks-store.vercel.app
+- Project Link: <https://isaks-store.vercel.app>
