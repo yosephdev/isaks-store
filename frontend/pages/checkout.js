@@ -16,9 +16,28 @@ export default function Checkout() {
   const dispatch = useDispatch();
   const { items, totalQuantity, totalAmount } = useSelector((state) => state.cart);
   
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
+  const [showAuthOptions, setShowAuthOptions] = useState(false);
+
   useEffect(() => {
     setIsClient(true);
-  }, []);
+    
+    // Prefill form with user data if authenticated
+    if (isAuthenticated && user) {
+      setFormData(prevData => ({
+        ...prevData,
+        firstName: user.firstName || '',
+        lastName: user.lastName || '',
+        email: user.email || '',
+        phone: user.phone || '',
+        shippingStreet: user.shippingAddress?.street || '',
+        shippingCity: user.shippingAddress?.city || '',
+        shippingState: user.shippingAddress?.state || '',
+        shippingZipCode: user.shippingAddress?.zipCode || '',
+        shippingCountry: user.shippingAddress?.country || 'US'
+      }));
+    }
+  }, [isAuthenticated, user]);
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -101,17 +120,21 @@ export default function Checkout() {
     setLoading(true);
 
     try {
-      // Create order
-      // Debug log
-      console.log('Cart items:', items);
+      // If authenticated, get user info from state
+      const customerInfo = isAuthenticated ? {
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        phone: formData.phone || user.phone
+      } : {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone
+      };
       
       const orderData = {
-        customerInfo: {
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          phone: formData.phone
-        },
+        customerInfo,
         shippingAddress: {
           street: formData.shippingStreet,
           city: formData.shippingCity,
@@ -184,9 +207,59 @@ export default function Checkout() {
         <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Column - Forms */}
           <div className="space-y-8">
+            {/* Authentication Options */}
+            {!isAuthenticated && (
+              <div className="bg-white p-6 rounded-lg shadow">
+                <h2 className="text-xl font-semibold mb-4">Checkout Options</h2>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between p-4 bg-gray-50 rounded-md">
+                    <div>
+                      <h3 className="font-medium">Have an account?</h3>
+                      <p className="text-sm text-gray-600">Sign in for faster checkout</p>
+                    </div>
+                    <Link
+                      href={{ pathname: '/login', query: { redirect: '/checkout' } }}
+                      className="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-900 transition-colors"
+                    >
+                      Sign In
+                    </Link>
+                  </div>
+                  
+                  <div className="flex items-center justify-between p-4 bg-gray-50 rounded-md">
+                    <div>
+                      <h3 className="font-medium">New customer?</h3>
+                      <p className="text-sm text-gray-600">Create an account for future benefits</p>
+                    </div>
+                    <Link
+                      href={{ pathname: '/register', query: { redirect: '/checkout' } }}
+                      className="bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition-colors"
+                    >
+                      Register
+                    </Link>
+                  </div>
+                  
+                  <div className="flex items-center justify-between p-4 bg-gray-50 rounded-md">
+                    <div>
+                      <h3 className="font-medium">Guest Checkout</h3>
+                      <p className="text-sm text-gray-600">Continue without an account</p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setShowAuthOptions(false)}
+                      className="text-gray-600 hover:text-gray-800"
+                    >
+                      Continue as Guest
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Customer Information */}
             <div className="bg-white p-6 rounded-lg shadow">
-              <h2 className="text-xl font-semibold mb-4">Customer Information</h2>
+              <h2 className="text-xl font-semibold mb-4">
+                {isAuthenticated ? `Welcome back, ${user.firstName}` : 'Customer Information'}
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
