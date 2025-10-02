@@ -35,14 +35,14 @@ export default function Page() {
         
         // Define priority products that should appear first
         const priorityProducts = [
-          'Minimalist Wallet',
-          'Wireless Charging Pad', 
-          'Stainless Steel Water Bottle',
-          'USB-C Hub Adapter',
           'Smart Fitness Watch',
           'Leather Messenger Bag',
           'Portable Bluetooth Speaker',
-          'Premium Wireless Headphones'
+          'Premium Wireless Headphones',
+          'Minimalist Wallet',
+          'Wireless Charging Pad', 
+          'Stainless Steel Water Bottle',
+          'USB-C Hub Adapter'
         ];
         
         // Sort products with priority products first, then by newest
