@@ -1,63 +1,109 @@
-# Isaks Store
+# Isaks Store - Full-Stack E-commerce Platform
 
-Isaks Store is a modern e-commerce platform built with [Next.js](https://nextjs.org/). The store offers a seamless online shopping experience with a wide range of products. Check out the live project [here](https://isaks-store.vercel.app/).
+A modern e-commerce platform built with Next.js, Express, MongoDB, and Stripe.
 
-## Features
+## 🚀 Tech Stack
 
-- Responsive design ensuring a good user experience on both desktop and mobile devices.
-- Fast page loading with Server Side Rendering (SSR) enabled by Next.js.
-- Secure and straightforward checkout process.
-- Search functionality for easily finding products.
-- Product categorization and sorting.
+- **Frontend**: Next.js, React, Redux Toolkit, TailwindCSS
+- **Backend**: Express.js, Node.js
+- **Database**: MongoDB with Mongoose
+- **Payments**: Stripe API
+- **Authentication**: JWT
+- **State Management**: Redux Toolkit
 
-## Getting Started
+## 📁 Project Structure
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+```
+isaks-store/
+├── frontend/          # Next.js frontend
+│   ├── pages/         # Next.js routes
+│   ├── components/    # Shared UI components
+│   ├── store/         # Redux Toolkit setup
+│   ├── styles/        # TailwindCSS
+│   └── utils/         # Helpers (auth, fetch, etc.)
+├── backend/           # Express backend
+│   └── src/
+│       ├── models/    # Mongoose schemas
+│       ├── routes/    # Express routes
+│       ├── controllers/ # Business logic
+│       ├── middleware/ # Auth, error handling
+│       └── server.js  # Express app entry
+└── package.json       # Root config for scripts
+```
+
+## 🛠️ Setup Instructions
 
 ### Prerequisites
 
-- Node.js (v14 or later)
-- Yarn or npm
+- Node.js (v16 or higher)
+- MongoDB (local or MongoDB Atlas)
+- Stripe account
 
-### Installation
-
-1. Clone the repository:
+### 1. Install Dependencies
 
 ```bash
-git clone https://github.com/your-username/isaks-store.git
-
+npm run install:all
 ```
 
-2. Change into the project directory:
+### 2. Environment Setup
 
-```bash
-cd isaks-store
+Create a `.env` file in the root directory with the following variables:
 
+```env
+# Database
+MONGODB_URI=mongodb://localhost:27017/isaks-store
+
+# JWT Secret (generate a secure random string)
+JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
+
+# Stripe Keys
+STRIPE_SECRET_KEY=sk_test_your_stripe_secret_key_here
+STRIPE_PUBLISHABLE_KEY=pk_test_your_stripe_publishable_key_here
+
+# Server Configuration
+PORT=5000
+NODE_ENV=development
+FRONTEND_URL=http://localhost:3000
 ```
 
-5. Install dependencies:
+### 3. Start Development Servers
 
 ```bash
-yarn install
-# or with npm
-npm install
-
-```
-
-4. Run the development server:
-
-```bash
-
-yarn dev
-# or with npm
+# Start both frontend and backend concurrently
 npm run dev
 
-```bash
-### Now, the app should be running on http://localhost:3000.
-
+# Or start them separately:
+npm run dev:frontend  # Frontend on http://localhost:3000
+npm run dev:backend   # Backend on http://localhost:5000
 ```
 
-### Contact
+## 📋 Development Roadmap
 
-- Project Maintainer: Yoseph Berhane
-- Project Link: <https://isaks-store.vercel.app>
+- [x] **Step 1**: Project Setup ✅
+- [ ] **Step 2**: Authentication (User model, JWT, login/register)
+- [ ] **Step 3**: Product Management (CRUD API, frontend pages)
+- [ ] **Step 4**: Shopping Cart (Redux, localStorage persistence)
+- [ ] **Step 5**: Checkout & Stripe (Payment integration)
+- [ ] **Step 6**: Admin Dashboard (Product/order management)
+- [ ] **Step 7**: Polish (Responsive design, SEO, deployment)
+
+## 🔧 Available Scripts
+
+- `npm run dev` - Start both frontend and backend
+- `npm run dev:frontend` - Start only frontend
+- `npm run dev:backend` - Start only backend
+- `npm run build` - Build frontend for production
+- `npm run start` - Start backend in production mode
+- `npm run install:all` - Install all dependencies
+
+## 🌐 API Endpoints
+
+- `GET /` - API health check
+- `GET /api/health` - Detailed health status
+
+## 📝 Notes
+
+- Frontend runs on port 3000
+- Backend runs on port 5000
+- MongoDB connection is configured for local development
+- Stripe integration is set up for test mode
