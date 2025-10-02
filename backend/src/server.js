@@ -27,9 +27,12 @@ if (isProduction) {
 
 // Connect to MongoDB
 const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/isaks-store';
-const mongoUriWithDb = mongoUri.includes('mongodb+srv://')
-  ? mongoUri.replace('mongodb+srv://', 'mongodb+srv://').replace('/?', '/isaks-store?')
-  : mongoUri;
+// Extract the base URI and parameters
+const [baseUri, params] = mongoUri.split('?');
+// Add database name before parameters
+const mongoUriWithDb = baseUri.endsWith('/isaks-store') 
+  ? mongoUri 
+  : `${baseUri}/isaks-store${params ? '?' + params : ''}`;
 
 mongoose.connect(mongoUriWithDb)
 .then(() => {
