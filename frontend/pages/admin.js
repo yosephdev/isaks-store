@@ -41,7 +41,7 @@ export default function AdminProducts() {
   const loadProducts = async () => {
     try {
       setLoading(true);
-      const response = await api.get('/products?limit=50');
+      const response = await api.get('/api/products?limit=50');
       setProducts(response.data.data.products);
       setError(null);
     } catch (err) {
@@ -98,9 +98,9 @@ export default function AdminProducts() {
       };
 
       if (editingProduct) {
-        await api.put(`/products/${editingProduct._id}`, productData);
+        await api.put(`/api/products/${editingProduct._id}`, productData);
       } else {
-        await api.post('/products', productData);
+        await api.post('/api/products', productData);
       }
 
       setShowCreateForm(false);
