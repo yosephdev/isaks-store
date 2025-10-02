@@ -17,7 +17,7 @@ export default function Page() {
     const fetchProducts = async () => {
       try {
         // Fetch all products for home page
-        const response = await api.get('/products?all=true');
+        const response = await api.get('/products');
         // Products are in response.data.data.products
         const productsData = response.data.data.products;
         if (!Array.isArray(productsData)) {
