@@ -1,0 +1,27 @@
+{
+  "name": "isaks-store-backend",
+  "description": "Backend API for Isaks Store",
+  "keywords": ["node", "express", "mongodb"],
+  "env": {
+    "MONGODB_URI": {
+      "description": "MongoDB Atlas connection string",
+      "required": true
+    },
+    "JWT_SECRET": {
+      "description": "Secret key for JWT token generation",
+      "required": true
+    },
+    "STRIPE_SECRET_KEY": {
+      "description": "Stripe secret key for payment processing",
+      "required": true
+    },
+    "FRONTEND_URL": {
+      "description": "URL of the frontend application",
+      "required": true
+    },
+    "NODE_ENV": {
+      "description": "Node environment",
+      "value": "production"
+    }
+  }
+}
