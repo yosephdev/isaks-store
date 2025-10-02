@@ -1,0 +1,236 @@
+[
+  {
+    "id": 1,
+    "title": "Premium Wireless Headphones",
+    "price": 299.99,
+    "description": "High-quality wireless headphones with active noise cancellation and 30-hour battery life.",
+    "category": "electronics",
+    "image": "/images/premium-wireless-headphones.png",
+    "rating": { "rate": 4.5, "count": 128 }
+  },
+  {
+    "id": 2,
+    "title": "Smart Fitness Watch",
+    "price": 199.99,
+    "description": "Track your fitness goals with this advanced smartwatch featuring heart rate monitoring and GPS.",
+    "category": "electronics",
+    "image": "/images/smart-fitness-watch.png",
+    "rating": { "rate": 4.3, "count": 89 }
+  },
+  {
+    "id": 3,
+    "title": "Leather Messenger Bag",
+    "price": 149.99,
+    "description": "Handcrafted genuine leather messenger bag perfect for work or travel.",
+    "category": "accessories",
+    "image": "/images/leather-messenger-bag.png",
+    "rating": { "rate": 4.7, "count": 56 }
+  },
+  {
+    "id": 4,
+    "title": "Portable Bluetooth Speaker",
+    "price": 79.99,
+    "description": "Waterproof portable speaker with 360-degree sound and 12-hour battery life.",
+    "category": "electronics",
+    "image": "/images/portable-bluetooth-speaker.jpg",
+    "rating": { "rate": 4.4, "count": 203 }
+  },
+  {
+    "id": 5,
+    "title": "Minimalist Wallet",
+    "price": 49.99,
+    "description": "Slim RFID-blocking wallet with space for cards and cash in a compact design.",
+    "category": "accessories",
+    "image": "/images/minimalist-wallet.jpg",
+    "rating": { "rate": 4.6, "count": 142 }
+  },
+  {
+    "id": 6,
+    "title": "Wireless Charging Pad",
+    "price": 39.99,
+    "description": "Fast wireless charging pad compatible with all Qi-enabled devices.",
+    "category": "electronics",
+    "image": "/images/wireless-charging-pad.png",
+    "rating": { "rate": 4.2, "count": 97 }
+  },
+  {
+    "id": 7,
+    "title": "Stainless Steel Water Bottle",
+    "price": 34.99,
+    "description": "Insulated water bottle keeps drinks cold for 24 hours or hot for 12 hours.",
+    "category": "accessories",
+    "image": "/images/stainless-steel-bottle.png",
+    "rating": { "rate": 4.8, "count": 312 }
+  },
+  {
+    "id": 8,
+    "title": "USB-C Hub Adapter",
+    "price": 59.99,
+    "description": "7-in-1 USB-C hub with HDMI, USB 3.0, SD card reader, and power delivery.",
+    "category": "electronics",
+    "image": "/images/usb-c-hub-adapter.jpg",
+    "rating": { "rate": 4.1, "count": 74 }
+  },
+  {
+    "id": "balo_bapago_navy",
+    "title": "Balo Bapago Kaya Navy",
+    "price": 40.00,
+    "description": "Stylish navy backpack for everyday use.",
+    "category": "bags",
+    "image": "/images/1.jpg",
+    "rating": { "rate": 4.3, "count": 32 }
+  },
+  {
+    "id": "balo_b2b04_black",
+    "title": "Balo B2B04 Black",
+    "price": 55.00,
+    "description": "Durable black backpack with multiple compartments.",
+    "category": "bags",
+    "image": "/images/2.jpg",
+    "rating": { "rate": 4.5, "count": 21 }
+  },
+  {
+    "id": "brown_brim_cap",
+    "title": "Brown Brim",
+    "price": 50.00,
+    "description": "Classic brown brim cap for casual wear.",
+    "category": "hats",
+    "image": "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+    "rating": { "rate": 4.2, "count": 18 }
+  },
+  {
+    "id": "blue_beanie",
+    "title": "Blue Beanie",
+    "price": 40.00,
+    "description": "Warm blue beanie for winter.",
+    "category": "hats",
+    "image": "https://i.ibb.co/ypkgK0X/blue-beanie.png",
+    "rating": { "rate": 4.1, "count": 15 }
+  },
+  {
+    "id": "brown_cowboy_cap",
+    "title": "Brown Cowboy",
+    "price": 52.00,
+    "description": "Brown cowboy hat for outdoor adventures.",
+    "category": "hats",
+    "image": "https://i.ibb.co/QdJwgmp/brown-cowboy.png",
+    "rating": { "rate": 4.0, "count": 10 }
+  },
+  {
+    "id": "grey_brim_cap",
+    "title": "Grey Brim",
+    "price": 54.00,
+    "description": "Modern grey brim cap for all outfits.",
+    "category": "hats",
+    "image": "https://i.ibb.co/RjBLWxB/grey-brim.png",
+    "rating": { "rate": 4.3, "count": 12 }
+  },
+  {
+    "id": "green_beanie",
+    "title": "Green Beanie",
+    "price": 60.00,
+    "description": "Cozy green beanie for chilly days.",
+    "category": "hats",
+    "image": "https://i.ibb.co/YTjW3vF/green-beanie.png",
+    "rating": { "rate": 4.4, "count": 14 }
+  },
+  {
+    "id": "palm_tree_cap",
+    "title": "Palm Tree cap",
+    "price": 40.00,
+    "description": "Palm tree print cap for summer vibes.",
+    "category": "hats",
+    "image": "https://i.ibb.co/rKBDvJX/palm-tree-cap.png",
+    "rating": { "rate": 4.2, "count": 11 }
+  },
+  {
+    "id": "red_beanie",
+    "title": "Red Beanie",
+    "price": 42.00,
+    "description": "Bright red beanie for a pop of color.",
+    "category": "hats",
+    "image": "https://i.ibb.co/bLB646Z/red-beanie.png",
+    "rating": { "rate": 4.1, "count": 13 }
+  },
+  {
+    "id": "wolf_cap",
+    "title": "Wolf cap",
+    "price": 60.00,
+    "description": "Wolf print cap for animal lovers.",
+    "category": "hats",
+    "image": "https://i.ibb.co/1f2nWMM/wolf-cap.png",
+    "rating": { "rate": 4.5, "count": 16 }
+  },
+  {
+    "id": "adidas_nmd",
+    "title": "Adidas NMD",
+    "price": 220.00,
+    "description": "Trendy Adidas NMD sneakers for comfort and style.",
+    "category": "shoes",
+    "image": "https://i.ibb.co/0s3pdnc/adidas-nmd.png",
+    "rating": { "rate": 4.6, "count": 40 }
+  },
+  {
+    "id": "adidas_yeezy",
+    "title": "Adidas Yeezy",
+    "price": 280.00,
+    "description": "Iconic Adidas Yeezy shoes for sneakerheads.",
+    "category": "shoes",
+    "image": "https://i.ibb.co/dJbG1cT/yeezy.png",
+    "rating": { "rate": 4.7, "count": 35 }
+  },
+  {
+    "id": "black_converse",
+    "title": "Black Converse",
+    "price": 110.00,
+    "description": "Classic black Converse sneakers.",
+    "category": "shoes",
+    "image": "https://i.ibb.co/bPmVXyP/black-converse.png",
+    "rating": { "rate": 4.4, "count": 22 }
+  },
+  {
+    "id": "nike_white_airforce",
+    "title": "Nike White AirForce",
+    "price": 160.00,
+    "description": "Crisp white Nike AirForce shoes.",
+    "category": "shoes",
+    "image": "https://i.ibb.co/1RcFPk0/white-nike-high-tops.png",
+    "rating": { "rate": 4.5, "count": 28 }
+  },
+  {
+    "id": "nike_red_high_tops",
+    "title": "Nike Red High Tops",
+    "price": 160.00,
+    "description": "Bold red Nike high top sneakers.",
+    "category": "shoes",
+    "image": "https://i.ibb.co/QcvzydB/nikes-red.png",
+    "rating": { "rate": 4.3, "count": 19 }
+  },
+  {
+    "id": "nike_brown_high_tops",
+    "title": "Nike Brown High Tops",
+    "price": 160.00,
+    "description": "Brown Nike high top sneakers for a unique look.",
+    "category": "shoes",
+    "image": "https://i.ibb.co/fMTV342/nike-brown.png",
+    "rating": { "rate": 4.2, "count": 17 }
+  },
+  {
+    "id": "air_jordan_limited",
+    "title": "Air Jordan Limited",
+    "price": 190.00,
+    "description": "Limited edition Air Jordan sneakers.",
+    "category": "shoes",
+    "image": "https://i.ibb.co/w4k6Ws9/nike-funky.png",
+    "rating": { "rate": 4.8, "count": 25 }
+  },
+  {
+    "id": "timberlands",
+    "title": "Timberlands",
+    "price": 200.00,
+    "description": "Rugged Timberland boots for all terrains.",
+    "category": "shoes",
+    "image": "https://i.ibb.co/Mhh6wBg/timberlands.png",
+    "rating": { "rate": 4.7, "count": 30 }
+  }
+]
