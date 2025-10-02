@@ -16,6 +16,15 @@ const api = axios.create({
   },
 });
 
+// Add a request interceptor to add /api prefix to all requests
+api.interceptors.request.use((config) => {
+  // Add /api prefix to the URL if it doesn't start with /api
+  if (!config.url.startsWith('/api')) {
+    config.url = '/api' + config.url;
+  }
+  return config;
+});
+
 // Request interceptor to add auth token
 api.interceptors.request.use(
   (config) => {
