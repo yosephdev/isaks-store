@@ -17,7 +17,7 @@ export default function Checkout() {
   const { items, totalQuantity, totalAmount } = useSelector((state) => state.cart);
   
   const { isAuthenticated, user } = useSelector((state) => state.auth);
-  const [showAuthOptions, setShowAuthOptions] = useState(false);
+  const [showAuthOptions, setShowAuthOptions] = useState(true);
 
   useEffect(() => {
     setIsClient(true);
@@ -208,7 +208,7 @@ export default function Checkout() {
           {/* Left Column - Forms */}
           <div className="space-y-8">
             {/* Authentication Options */}
-            {!isAuthenticated && (
+            {!isAuthenticated && showAuthOptions && (
               <div className="bg-white p-6 rounded-lg shadow">
                 <h2 className="text-xl font-semibold mb-4">Checkout Options</h2>
                 <div className="space-y-4">
@@ -246,7 +246,7 @@ export default function Checkout() {
                     <button
                       type="button"
                       onClick={() => setShowAuthOptions(false)}
-                      className="text-gray-600 hover:text-gray-800"
+                      className="bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition-colors"
                     >
                       Continue as Guest
                     </button>
@@ -256,10 +256,22 @@ export default function Checkout() {
             )}
 
             {/* Customer Information */}
-            <div className="bg-white p-6 rounded-lg shadow">
-              <h2 className="text-xl font-semibold mb-4">
-                {isAuthenticated ? `Welcome back, ${user.firstName}` : 'Customer Information'}
-              </h2>
+            {(isAuthenticated || !showAuthOptions) && (
+              <div className="bg-white p-6 rounded-lg shadow">
+                <div className="flex justify-between items-center mb-4">
+                  <h2 className="text-xl font-semibold">
+                    {isAuthenticated ? `Welcome back, ${user.firstName}` : 'Customer Information'}
+                  </h2>
+                  {!isAuthenticated && (
+                    <button
+                      type="button"
+                      onClick={() => setShowAuthOptions(true)}
+                      className="text-sm text-gray-600 hover:text-gray-800"
+                    >
+                      Back to Options
+                    </button>
+                  )}
+                </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
