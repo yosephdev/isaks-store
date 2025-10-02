@@ -27,7 +27,7 @@ export default function Products() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await api.get('/products', {
+        const response = await api.get('/api/products', {
           params: {
             all: true  // Get all products for client-side filtering
           }
