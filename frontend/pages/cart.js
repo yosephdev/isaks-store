@@ -72,7 +72,7 @@ function Cart() {
             <p className="text-gray-600 mb-8">Looks like you haven't added any items to your cart yet.</p>
             <Link
               href="/products"
-              className="bg-primary-600 text-white px-8 py-3 rounded-md hover:bg-primary-700 font-medium"
+              className="bg-black text-white px-8 py-3 rounded-md hover:bg-gray-900 font-medium transition-colors duration-200"
             >
               Continue Shopping
             </Link>
