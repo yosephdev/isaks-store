@@ -27,7 +27,7 @@ export default function ProductDetail() {
   const loadProduct = async () => {
     try {
       setLoading(true);
-      const response = await api.get(`/products/${id}`);
+      const response = await api.get(`/api/products/${id}`);
       const productData = response.data.data;
       
       // Normalize the product data to match expected format

@@ -8,7 +8,7 @@ export default function TestAPI() {
     const testAPI = async () => {
       try {
         console.log('Testing API connection...');
-        const response = await api.get('/products?page=1&limit=5');
+        const response = await api.get('/api/products?page=1&limit=5');
         console.log('API Response:', response.data);
         setResult(`Success! Found ${response.data.data.products.length} products`);
       } catch (error) {
