@@ -275,8 +275,8 @@ const getOrder = async (req, res) => {
       });
     }
 
-    // Check if user owns this order
-    if (order.user && order.user._id.toString() !== req.user.id) {
+    // Check if user owns this order (only if user is authenticated)
+    if (req.user && order.user && order.user._id.toString() !== req.user.id) {
       return res.status(403).json({
         success: false,
         message: 'Access denied'

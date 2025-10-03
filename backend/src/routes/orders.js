@@ -17,8 +17,8 @@ router.post('/confirm-payment', orderController.confirmPayment);
 // Get user orders (protected)
 router.get('/my-orders', protect, orderController.getUserOrders);
 
-// Get single order (protected)
-router.get('/:orderId', protect, orderController.getOrder);
+// Get single order (allow guest access for payment)
+router.get('/:orderId', orderController.getOrder);
 
 // Update order status (admin only)
 router.put('/:orderId/status', protect, authorize('admin'), orderController.updateOrderStatus);
