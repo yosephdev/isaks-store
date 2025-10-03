@@ -6,7 +6,7 @@ export function normalizeProduct(product) {
 }
 import axios from 'axios';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
+const API_URL = '';
 
 // Create axios instance
 const api = axios.create({

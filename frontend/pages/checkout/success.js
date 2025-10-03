@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import Link from 'next/link';
 import Navbar from '../../components/Navbar';
 import { clearCart } from '../../store/cartSlice';
-import api from '../../utils/api';
 
 export default function PaymentSuccess() {
   const router = useRouter();

@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { loadStripe } from '@stripe/stripe-js';
 import Navbar from '../../components/Navbar';
 import { clearCart } from '../../store/cartSlice';
-import api from '../../utils/api';
 
 console.log('Stripe Key:', process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
