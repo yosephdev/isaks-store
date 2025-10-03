@@ -158,20 +158,35 @@ export default function Checkout() {
         paymentMethod: 'stripe'
       };
 
-      const orderResponse = await api.post('/orders', orderData);
-      const createdOrder = orderResponse.data.data.order;
+      const orderResponse = await fetch('/api/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData),
+      });
+      
+      const orderData_result = await orderResponse.json();
+      const createdOrder = orderData_result.data.order;
       setOrder(createdOrder);
 
       // Create payment intent
-      const paymentResponse = await api.post(`/orders/${createdOrder._id}/payment-intent`);
-      setPaymentIntent(paymentResponse.data.data);
+      const paymentResponse = await fetch(`/api/orders/${createdOrder._id}/payment-intent`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      
+      const paymentData = await paymentResponse.json();
+      setPaymentIntent(paymentData.data);
 
       // Redirect to payment page
-      router.push(`/checkout/payment?orderId=${createdOrder._id}&clientSecret=${paymentResponse.data.data.clientSecret}`);
+      router.push(`/checkout/payment?orderId=${createdOrder._id}&clientSecret=${paymentData.data.clientSecret}`);
 
     } catch (error) {
       console.error('Checkout error:', error);
-      const errorMessage = error.response?.data?.message || 'Failed to create order. Please try again.';
+      const errorMessage = error.message || 'Failed to create order. Please try again.';
       alert(errorMessage);
     } finally {
       setLoading(false);
@@ -272,62 +287,64 @@ export default function Checkout() {
                     </button>
                   )}
                 </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    First Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Last Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                  />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      First Name *
+                    </label>
+                    <input
+                      type="text"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Last Name *
+                    </label>
+                    <input
+                      type="text"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Phone
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
 
             {/* Shipping Address */}
+
             <div className="bg-white p-6 rounded-lg shadow">
               <h2 className="text-xl font-semibold mb-4">Shipping Address</h2>
               <div className="space-y-4">
@@ -387,6 +404,7 @@ export default function Checkout() {
                 </div>
               </div>
             </div>
+
 
             {/* Billing Address */}
             <div className="bg-white p-6 rounded-lg shadow">

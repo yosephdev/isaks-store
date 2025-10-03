@@ -6,7 +6,7 @@ export function normalizeProduct(product) {
 }
 import axios from 'axios';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
 
 // Create axios instance
 const api = axios.create({
@@ -22,6 +22,8 @@ api.interceptors.request.use((config) => {
   if (!config.url.startsWith('/api')) {
     config.url = '/api' + config.url;
   }
+  console.log('🔍 API Request URL:', config.baseURL + config.url);
+  console.log('🔍 API Request params:', config.params);
   return config;
 });
 
@@ -43,8 +45,12 @@ api.interceptors.request.use(
 
 // Response interceptor to handle errors
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    console.log('✅ API Response:', response.status, response.data);
+    return response;
+  },
   (error) => {
+    console.error('❌ API Error:', error.response?.status, error.message);
     if (error.response?.status === 401 && typeof window !== 'undefined') {
       // Clear auth state
       localStorage.removeItem('token');

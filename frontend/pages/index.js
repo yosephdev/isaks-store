@@ -2,26 +2,33 @@ import { useState, useEffect } from 'react'
 import Navbar from "../components/Navbar"
 import ProductCard from "./ProductCard"
 import Image from "next/image"
-import api from '../utils/api'
+import dynamic from 'next/dynamic'
 
-export const metadata = {
-  title: "Isaks Store - Premium Products",
-  description: "Shop the latest electronics and accessories at Isaks Store",
-}
+// Dynamically import the API utility to avoid SSR issues
+const api = dynamic(() => import('../utils/api'), { ssr: false })
 
 export default function Page() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    
     const fetchProducts = async () => {
       try {
-        // Fetch all products for home page
-        const response = await api.get('/api/products', {
-          params: { all: true }
-        });
-        // Products are in response.data.data.products
-        const productsData = response.data.data.products;
+        console.log('🔍 Fetching products from API...');
+        const response = await fetch('/api/products');
+        const data = await response.json();
+        console.log('📦 API Response:', data);
+        
+        const productsData = data.data.products;
+        console.log('📋 Products Data:', productsData);
+        
         if (!Array.isArray(productsData)) {
           throw new Error('Invalid response format');
         }
@@ -71,24 +78,18 @@ export default function Page() {
           return (b.id || b._id).toString().localeCompare((a.id || a._id).toString());
         });
         
+        console.log('✅ Final sorted products:', sortedProducts);
         setProducts(sortedProducts);
       } catch (error) {
-        console.error('Error fetching products:', error);
-        setProducts([]); // Set empty array on error
+        console.error('❌ Error fetching products:', error);
+        setProducts([]);
       } finally {
         setLoading(false);
       }
     };
+    
     fetchProducts();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-black"></div>
-      </div>
-    );
-  }
+  }, [mounted]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -109,11 +110,17 @@ export default function Page() {
 
       <main className="flex-1">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {products.map((product) => (
-              <ProductCard key={product._id} {...product} />
-            ))}
-          </div>
+          {loading ? (
+            <div className="flex items-center justify-center min-h-64">
+              <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-black"></div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {products.map((product) => (
+                <ProductCard key={product._id} {...product} />
+              ))}
+            </div>
+          )}
         </div>
       </main>
 

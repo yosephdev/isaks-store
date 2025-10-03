@@ -48,30 +48,29 @@ export default function Login() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (!validateForm()) return;
-    
-    dispatch(loginStart());
-    
+
     try {
+      dispatch(loginStart());
       const response = await api.post('/auth/login', formData);
-      const { token, user } = response.data;
+      const { token, user } = response.data.data;
       
-      // Store token and user data
       localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify(user));
-      
       dispatch(loginSuccess({ token, user }));
       
-      // Redirect to home page or intended page
-      const redirectTo = router.query.redirect || '/';
-      router.push(redirectTo);
+      // Check if there's a redirect URL in the query parameters
+      const redirectUrl = router.query.redirect || '/';
+      router.push(redirectUrl);
     } catch (error) {
-      const message = error.response?.data?.message || 'Login failed';
-      dispatch(loginFailure(message));
-      setErrors({ general: message });
+      console.error('Login error:', error);
+      const errorMessage = error.response?.data?.message || 'Login failed';
+      dispatch(loginFailure(errorMessage));
+      setErrors({
+        form: errorMessage
+      });
     }
   };
 

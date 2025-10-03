@@ -33,8 +33,9 @@ export default function PaymentSuccess() {
 
   const loadOrder = async () => {
     try {
-      const response = await api.get(`/orders/${orderId}`);
-      setOrder(response.data.data.order);
+      const response = await fetch(`/api/orders/${orderId}`);
+      const data = await response.json();
+      setOrder(data.data);
       
       // Clear cart after successful payment
       dispatch(clearCart());

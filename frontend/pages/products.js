@@ -4,7 +4,6 @@ import Navbar from '../components/Navbar';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../store/cartSlice';
 import Link from 'next/link';
-import api from '../utils/api';
 
 export default function Products() {
   const dispatch = useDispatch();
@@ -22,19 +21,26 @@ export default function Products() {
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Fetch products from backend
   useEffect(() => {
+    if (!mounted) return;
+    
     const fetchProducts = async () => {
       try {
-        const response = await api.get('/api/products', {
-          params: {
-            all: true  // Get all products for client-side filtering
-          }
-        });
+        console.log('🔍 Products page: Fetching products from API...');
+        const response = await fetch('/api/products');
+        const data = await response.json();
+        console.log('📦 Products page: API Response:', data);
         
-        // Products are in response.data.data.products
-        const productsData = response.data.data.products;
+        // Products are in response.data.products
+        const productsData = data.data.products;
+        console.log('📋 Products page: Products Data:', productsData);
         
         if (!Array.isArray(productsData)) {
           console.error('Expected array but got:', typeof productsData, productsData);
@@ -48,16 +54,18 @@ export default function Products() {
           image: p.image || p.primaryImage || (p.images && p.images[0] && p.images[0].url) || "/images/placeholder.jpg"
         }));
         
+        console.log('✅ Products page: Final normalized products:', normalizedProducts);
         setProducts(normalizedProducts);
       } catch (error) {
-        console.error('Error fetching products:', error);
-        setProducts([]); // Set empty array on error
+        console.error('❌ Products page: Error fetching products:', error);
+        setProducts([]);
       } finally {
         setLoading(false);
       }
     };
+    
     fetchProducts();
-  }, []);
+  }, [mounted]);
 
   // Get unique categories from products
   const categories = useMemo(() => {
@@ -187,6 +195,10 @@ export default function Products() {
       <div>
         <Navbar />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold text-gray-900">Products</h1>
+            <p className="mt-2 text-gray-600">Discover our amazing collection</p>
+          </div>
           <div className="flex items-center justify-center min-h-64">
             <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-black"></div>
           </div>

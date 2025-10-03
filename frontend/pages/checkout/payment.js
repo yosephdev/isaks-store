@@ -30,8 +30,9 @@ export default function Payment() {
 
       try {
         // First load order data
-        const orderResponse = await api.get(`/orders/${orderId}`);
-        const orderData = orderResponse.data.data.order;
+        const orderResponse = await fetch(`/api/orders/${orderId}`);
+        const orderData_result = await orderResponse.json();
+        const orderData = orderData_result.data;
         if (mounted) {
           setOrder(orderData);
         }
