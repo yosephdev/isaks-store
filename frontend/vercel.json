@@ -4,6 +4,6 @@
   "outputDirectory": ".next",
   "framework": "nextjs",
   "env": {
-    "NEXT_PUBLIC_API_URL": "https://isaks-store-api-dac573a6a21b.herokuapp.com"
+    "BACKEND_URL": "https://isaks-store-api-dac573a6a21b.herokuapp.com"
   }
 }
